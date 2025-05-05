@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../image/logo.png';
 import { Link } from 'react-router-dom';
 
+
+
 export default function Header() {
+  const[isSticky,setIsSticky]= useState(false);
+  useEffect(()=>{
+    const handleScroll =()=>{
+      setIsSticky(window.scrollY>50);
+    };
+    window.addEventListener('scroll',handleScroll);
+    return () =>window.removeEventListener('scroll',handleScroll);
+  },[]);
   return (
-    <div className="flex justify-between items-center px-5 h-[100px] fixed top-0 right-0 z-50 w-full bg-white shadow-md">
+    <div className={`flex justify-between items-center px-5 h-[100px] fixed top-0 right-0 z-50 w-full  shadow-md ${isSticky ? 'bg-opacity-50':'bg-white'}`}>
       <Link to="/">
         <img src={logo} alt="Logo" className="w-32" />
       </Link>
