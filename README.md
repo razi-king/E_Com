@@ -9,30 +9,31 @@
   <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"/>
 </p>
 
-A responsive e-commerce storefront front end. It is built mobile-first with Tailwind CSS and a shared layout through React Router.
+A responsive fashion store you can actually shop: browse, filter, add to bag and check out.
+
+**Live demo:** https://razi-king.github.io/E_Com/
 
 <!-- Add a screenshot here: docs/screenshot.png -->
 
 ## ✨ Features
 
-- **Shared layout** with a header, footer and nested routes (React Router 7 `<Outlet>`)
-- **Home page** with hero banners, a product grid, a "News & Products" section and customer testimonials
-- **Footer** with company links, quick links, contact details and a newsletter sign-up
-- **Fully responsive** using Tailwind breakpoints (`sm` / `md` / `lg`), from phone to desktop
-- Login and register routes are stubbed and ready to wire to a backend
+- **Shop page** with search, category filter, price ranges, sorting and an in-stock toggle. Filters live in the URL, so a filtered view can be shared
+- **Product pages** with sale pricing and % off, size and colour selection, a quantity stepper, stock warnings and related products
+- **Bag** with quantity controls, savings and a free-delivery threshold, kept in `localStorage` so it survives a refresh
+- **Checkout** with field validation (10-digit mobile, 6-digit PIN), payment choice and an order confirmation page with a delivery estimate
+- **Cart state** with `useReducer` + Context; stock limits are enforced in the reducer
+- **Responsive** from phone to desktop; icons are bundled with the site, not loaded from a CDN
+- 404 page and deep links that work on GitHub Pages
 
 ## 🗂️ Structure
 
 ```
-first/
-└── src/
-    ├── App.jsx              → routes
-    ├── components/
-    │   ├── Layout.jsx       → header + <Outlet> + footer
-    │   ├── Header.jsx
-    │   ├── Home.jsx
-    │   └── Footer.jsx
-    └── image/               → product and banner assets
+first/src/
+├── App.jsx              → routes
+├── data/products.js     → catalogue
+├── context/CartContext  → cart reducer + localStorage
+├── pages/               → Shop, ProductPage, Cart, Checkout, OrderConfirmed, NotFound
+└── components/          → Header (search + cart badge), ProductCard, Stars, Home, Footer
 ```
 
 ## ▶️ Run locally
@@ -45,9 +46,9 @@ npm run dev      # http://localhost:5173
 
 ## 🛣️ Roadmap
 
-- [ ] Product detail page and cart with Context API
-- [ ] Login / register connected to a Spring Boot API
-- [ ] Deploy to GitHub Pages
+- [ ] Wishlist
+- [ ] Products and orders served from a Spring Boot API
+- [ ] Real payments with Razorpay test mode
 
 ---
 

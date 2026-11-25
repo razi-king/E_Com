@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <>
     <Header/>
-    <main className='mt-16'>
+    <main className='min-h-[70vh] pt-16'>
         <Outlet/>
     </main>
     <Footer/>
